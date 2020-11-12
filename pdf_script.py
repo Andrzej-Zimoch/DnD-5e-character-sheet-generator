@@ -16,11 +16,13 @@ def Func(folder_selected,
         bg_pt,bg_ideal,bg_bond,bg_flaw,
         sav_values,pass_wis,
         eq,spells,
-        hitdice,):
+        hitdice):
 
     from reportlab.pdfgen import canvas
     from reportlab.lib.units import cm
     from reportlab.lib import colors
+    import pathlib
+
     pdf_name=str(folder_selected+"/"+name+"_"+surname+".pdf")
     pdf_file = canvas.Canvas(pdf_name)
     print(pdf_name)
@@ -29,7 +31,9 @@ def Func(folder_selected,
     bg_heigth = page_height - 15
 
     pdf_file.translate(cm,cm)
-    pdf_file.drawImage("C:\\Users\\Agnieszka\\Desktop\\python\\scrypty\\dnd\\background.jpg",0,0,width=bg_width,height=bg_heigth,preserveAspectRatio=True)
+    #pdf_file.drawImage("C:\\Users\\Agnieszka\\Desktop\\python\\scrypty\\dnd\\background.jpg",0,0,width=bg_width,height=bg_heigth,preserveAspectRatio=True)
+    bg_dir=pathlib.Path(__file__).parent.absolute()
+    pdf_file.drawImage(str(bg_dir)+"/background.jpg",0,0,width=bg_width,height=bg_heigth,preserveAspectRatio=True)
     
     pdf_file.setFontSize(11)
     
